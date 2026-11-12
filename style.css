@@ -1,175 +1,263 @@
+/* =================================
+   1. GENERAL RESET
+================================= */
+
 * {
-    box-sizing: border-box;
     margin: 0;
     padding: 0;
+    box-sizing: border-box;
 }
 
 body {
-    font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
-    background: #f4f5f7;
-    color: #222;
+    font-family: 'Segoe UI', Arial, sans-serif;
+    background: linear-gradient(135deg, #667eea, #764ba2);
+    min-height: 100vh;
     display: flex;
     justify-content: center;
-    padding: 40px 16px;
+    align-items: center;
+    padding: 25px;
+    color: #333;
 }
+
+/* =================================
+   2. MAIN CONTAINER
+================================= */
 
 .container {
+    background: #ffffff;
     width: 100%;
-    max-width: 520px;
-    background: #fff;
-    border-radius: 12px;
-    box-shadow: 0 4px 24px rgba(0, 0, 0, 0.08);
-    padding: 28px;
+    max-width: 500px;
+    padding: 35px;
+    border-radius: 20px;
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.2);
 }
+
+/* =================================
+   3. HEADING
+================================= */
 
 h1 {
-    font-size: 1.5rem;
-    margin-bottom: 20px;
     text-align: center;
+    color: #5b4bc4;
+    font-size: 30px;
+    margin-bottom: 30px;
+    font-weight: 700;
 }
 
-/* Form */
+/* =================================
+   4. INPUT AND ADD BUTTON
+================================= */
+
 #todo-form {
     display: flex;
-    gap: 8px;
-    margin-bottom: 16px;
+    gap: 12px;
+    margin-bottom: 25px;
+    width: 100%;
 }
 
 #todo-input {
     flex: 1;
-    padding: 12px 14px;
-    border: 1px solid #d0d3d9;
-    border-radius: 8px;
-    font-size: 1rem;
+    min-width: 0;
+    padding: 14px;
+    border: 2px solid #e0e0e0;
+    border-radius: 10px;
     outline: none;
-    transition: border-color 0.15s;
+    font-size: 15px;
+    transition: 0.3s;
 }
 
 #todo-input:focus {
-    border-color: #4a7dff;
+    border-color: #7461df;
+    box-shadow: 0 0 5px rgba(116, 97, 223, 0.3);
 }
 
 #todo-form button {
-    padding: 12px 20px;
-    background: #4a7dff;
-    color: #fff;
+    background: #6c5ce7;
+    color: white;
+    padding: 14px 22px;
     border: none;
-    border-radius: 8px;
-    font-size: 1rem;
+    border-radius: 10px;
+    font-weight: 600;
     cursor: pointer;
-    transition: background 0.15s;
+    transition: 0.3s;
 }
 
 #todo-form button:hover {
-    background: #3a6ae6;
+    background: #5142bd;
+    transform: translateY(-2px);
 }
 
-/* Filters */
+/* =================================
+   5. FILTER BUTTONS
+================================= */
+
 .filters {
     display: flex;
-    gap: 8px;
-    margin-bottom: 12px;
+    justify-content: center;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 25px;
+    flex-wrap: wrap;
 }
 
 .filter {
-    padding: 6px 14px;
-    background: transparent;
-    border: 1px solid #d0d3d9;
-    border-radius: 20px;
-    font-size: 0.85rem;
+    background: #f0efff;
+    color: #6656c9;
+    border: none;
+    padding: 11px 20px;
+    border-radius: 25px;
     cursor: pointer;
-    transition: all 0.15s;
+    font-size: 14px;
+    font-weight: 600;
+    transition: 0.3s;
 }
 
 .filter:hover {
-    border-color: #4a7dff;
-    color: #4a7dff;
+    background: #ded9ff;
 }
 
 .filter.active {
-    background: #4a7dff;
-    border-color: #4a7dff;
-    color: #fff;
+    background: #6c5ce7;
+    color: white;
+    box-shadow: 0 4px 10px rgba(108, 92, 231, 0.3);
 }
 
-/* List */
+/* =================================
+   6. TASK LIST
+================================= */
+
 #todo-list {
     list-style: none;
-    margin-bottom: 16px;
+    margin-bottom: 20px;
 }
 
-.todo-item {
+#todo-list .todo-item {
     display: flex;
+    justify-content: space-between;
     align-items: center;
-    gap: 10px;
-    padding: 12px 8px;
-    border-bottom: 1px solid #eceef1;
-    border-radius: 6px;
-    transition: background 0.15s;
+    gap: 12px;
+    background: #f8f7ff;
+    padding: 15px;
+    margin-bottom: 12px;
+    border-radius: 12px;
+    border-left: 4px solid #6c5ce7;
+    transition: 0.3s;
 }
 
-.todo-item:hover {
-    background: #f8f9fb;
+#todo-list .todo-item:hover {
+    background: #f0edff;
+    transform: translateX(3px);
 }
 
-.todo-item .todo-text {
+.todo-text {
     flex: 1;
+    min-width: 0;
+    overflow-wrap: anywhere;
     cursor: pointer;
-    word-break: break-word;
-    padding: 2px 0;
+    font-size: 15px;
+    color: #444;
 }
+
+/* =================================
+   7. COMPLETED TASKS
+================================= */
 
 .todo-item.completed .todo-text {
     text-decoration: line-through;
-    color: #9aa0a6;
+    color: #aaa;
 }
 
-.todo-item .delete-btn {
-    background: transparent;
+/* =================================
+   8. DELETE BUTTON
+================================= */
+
+.delete-btn {
+    background: #ff6b81;
+    color: white;
     border: none;
-    color: #d94a4a;
-    font-size: 0.85rem;
+    padding: 9px 15px;
+    border-radius: 8px;
     cursor: pointer;
-    opacity: 0;
-    transition: opacity 0.15s;
-    padding: 4px 8px;
+    font-weight: 600;
+    transition: 0.3s;
 }
 
-.todo-item:hover .delete-btn,
-.todo-item .delete-btn:focus {
-    opacity: 1;
+.delete-btn:hover {
+    background: #e84360;
 }
 
-/* Edit mode */
-.todo-item .edit-input {
+/* =================================
+   9. EDIT INPUT
+================================= */
+
+.edit-input {
     flex: 1;
-    padding: 4px 8px;
-    border: 1px solid #4a7dff;
-    border-radius: 4px;
-    font-size: 1rem;
-    font-family: inherit;
+    min-width: 0;
+    padding: 10px;
+    border: 2px solid #6c5ce7;
+    border-radius: 8px;
+    outline: none;
+    font-size: 15px;
 }
 
-/* Stats */
+/* =================================
+   10. BOTTOM STATISTICS
+================================= */
+
 .stats {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    font-size: 0.85rem;
-    color: #6b7280;
-    padding-top: 8px;
-    border-top: 1px solid #eceef1;
+    gap: 15px;
+    flex-wrap: wrap;
+    border-top: 1px solid #eee;
+    padding-top: 20px;
+    margin-top: 15px;
+}
+
+#items-left {
+    color: #777;
+    font-size: 14px;
 }
 
 #clear-completed {
-    background: transparent;
+    background: #ff7675;
+    color: white;
     border: none;
-    color: #6b7280;
+    padding: 11px 16px;
+    border-radius: 9px;
     cursor: pointer;
-    font-size: 0.85rem;
-    text-decoration: underline;
+    font-weight: 600;
+    transition: 0.3s;
 }
 
 #clear-completed:hover {
-    color: #d94a4a;
+    background: #d63031;
+    transform: translateY(-2px);
+}
+
+/* =================================
+   11. MOBILE RESPONSIVENESS
+================================= */
+
+@media (max-width: 480px) {
+    .container {
+        padding: 22px;
+    }
+
+    h1 {
+        font-size: 25px;
+    }
+
+    .filters {
+        gap: 8px;
+    }
+
+    .filter {
+        padding: 10px 14px;
+    }
+
+    .stats {
+        justify-content: center;
+    }
 }
